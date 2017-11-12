@@ -1,36 +1,37 @@
 $(document).ready(function(){
-  function createTextCanvas(text, color, font, size) {
-      size = size || 16;
-      var canvas = document.createElement('canvas');
-      var ctx = canvas.getContext('2d');
-      var fontStr = (size + 'px ') + (font || 'Arial');
-      ctx.font = fontStr;
-      var w = ctx.measureText(text).width;
-      var h = Math.ceil(size);
-      canvas.width = w;
-      canvas.height = h;
-      ctx.font = fontStr;
-      ctx.fillStyle = color || 'black';
-      ctx.fillText(text, 0, Math.ceil(size * 0.8));
-      return canvas;
-  }
 
-  function createText2D(text, color, font, size, segW, segH) {
-      var canvas = createTextCanvas(text, color, font, size);
-      var plane = new THREE.PlaneGeometry(canvas.width, canvas.height, segW, segH);
-      var tex = new THREE.Texture(canvas);
-      tex.needsUpdate = true;
-      var planeMat = new THREE.MeshBasicMaterial({
-          map: tex,
-          color: 0xFFFFFF,
-          transparent: true
-      });
+    function createTextCanvas(text, color, font, size) {
+        size = size || 12;
+        var canvas = document.createElement('canvas');
+        var ctx = canvas.getContext('2d');
+        var fontStr = (size + 'px Monospace');
+        ctx.font = fontStr;
+        var w = ctx.measureText(text).width;
+        var h = Math.ceil(size);
+        canvas.width = w;
+        canvas.height = h;
+        ctx.font = fontStr;
+        ctx.fillStyle = 'white';
+        ctx.fillText(text, 0, 10);
+        return canvas;
+    }
 
-      var mesh = new THREE.Mesh(plane, planeMat);
-      mesh.scale.set(0.5, 0.5, 0.5);
-      mesh.doubleSided = true;
-      return mesh;
-  }
+    function createText2D(text, color, font, size, segW, segH) {
+        var canvas = createTextCanvas(text, color, font, size);
+        var plane = new THREE.PlaneGeometry(canvas.width, canvas.height, segW, segH);
+        var tex = new THREE.Texture(canvas);
+        tex.needsUpdate = true;
+        var planeMat = new THREE.MeshBasicMaterial({
+            map: tex,
+            color: 0xFFFFFF,
+            transparent: true
+        });
+        var mesh = new THREE.Mesh(plane, planeMat);
+        mesh.scale.set(0.5, 0.5, 0.5);
+        mesh.doubleSided = true;
+        return mesh;
+    }
+
 
   // from http://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
   function hexToRgb(hex) { //TODO rewrite with vector output
@@ -68,6 +69,49 @@ $(document).ready(function(){
 
   scatterPlot.rotation.y = 0;
 
+  var titleX = createText2D('6/10');
+  titleX.position.x = -45;
+  titleX.position.y = 20;
+  titleX.position.z = -55;
+  scatterPlot.add(titleX);
+
+  var titleX = createText2D('7/10');
+  titleX.position.x = -30;
+  titleX.position.y = 5;
+  titleX.position.z = -55;
+  scatterPlot.add(titleX);
+
+  var titleX = createText2D('8/10');
+  titleX.position.x = -15;
+  titleX.position.y = 20;
+  titleX.position.z = -55;
+  scatterPlot.add(titleX);
+
+  var titleX = createText2D('9/10');
+  titleX.position.x = 0;
+  titleX.position.y = 5;
+  titleX.position.z = -55;
+  scatterPlot.add(titleX);
+
+  var titleX = createText2D('10/10');
+  titleX.position.x = 15;
+  titleX.position.y = 20;
+  titleX.position.z = -55;
+  scatterPlot.add(titleX);
+
+  var titleX = createText2D('11/10');
+  titleX.position.x = 30;
+  titleX.position.y = 5;
+  titleX.position.z = -55;
+  scatterPlot.add(titleX);
+
+  var titleX = createText2D('12/10');
+  titleX.position.x = 45;
+  titleX.position.y = 20;
+  titleX.position.z = -55;
+  scatterPlot.add(titleX);
+  //
+
   function v(x, y, z) {
       return new THREE.Vector3(x, y, z);
   }
@@ -79,13 +123,6 @@ $(document).ready(function(){
   var format = d3.format("+.3f");
 
   var points = []
-
-
-
-
-
-
-
 
 
 
@@ -169,11 +206,10 @@ $(document).ready(function(){
     // valueX.position.y = -5;
     // scatterPlot.add(valueX);
     //
-    // var titleX = createText2D('X');
-    // titleX.position.x = xScale(vpts.xMax) + 12;
-    // titleX.position.y = 5;
-    // scatterPlot.add(titleX);
-    //
+    //createText2D(text, color, font, size, segW, segH)
+
+
+
     // var valueX = createText2D(format(xExent[1]));
     // valueX.position.x = xScale(vpts.xMax) + 12,
     // valueX.position.y = -5;
@@ -259,7 +295,6 @@ $(document).ready(function(){
     };
 
     function animate(t) {
-        scatterPlot.rotation.y += 0.0001;
         if (!paused) {
             last = t;
             if (animating) {
@@ -291,7 +326,7 @@ $(document).ready(function(){
     console.log(companies[0]);
     companies.forEach(function(company){
       processCompany(String(company.NAME)+".csv",i);
-      i++
+      i = i+1;
     });
   });
 
