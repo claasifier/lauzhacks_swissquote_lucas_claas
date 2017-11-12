@@ -1,0 +1,48 @@
+body {
+  margin: 40px;
+  background-color: #141010;
+  /*background-color: #ffffff;*/
+  border-color: white;
+  border: 5px;
+  font-family: monospace;
+}
+
+h1{
+  text-align: center;
+  font-family: arial;
+  color: white;
+}
+
+button{
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  margin: 10px;
+  font-size: 20px;
+  font-family: arial;
+  border: 20px;
+  color: #FFFFFF;
+  background-color: #555555;
+  border-radius: 25px;
+}
+
+canvas{
+  width: 100%;
+}
+
+
+div{
+  text-align: center;
+}
+
+.graph{
+  background-color: #141010;
+}
+
+#plot{
+  float: left;
+  width: 100%;
+  overflow: hidden;
+  height:100%;
+}

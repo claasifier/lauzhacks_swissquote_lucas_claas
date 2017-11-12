@@ -110,7 +110,42 @@ $(document).ready(function(){
   titleX.position.y = 20;
   titleX.position.z = -55;
   scatterPlot.add(titleX);
-  //
+
+  var titleX = createText2D('DATE');
+  titleX.position.x = 60;
+  titleX.position.y = 0;
+  titleX.position.z = -55;
+  scatterPlot.add(titleX);
+
+  var titleY = createText2D('2 M $');
+  titleY.position.x = -65;
+  titleY.position.y = 50;
+  titleY.position.z = -50;
+  scatterPlot.add(titleY);
+
+  var titleY = createText2D('1 M $');
+  titleY.position.x = -65;
+  titleY.position.y = 25;
+  titleY.position.z = -50;
+  scatterPlot.add(titleY);
+
+  var titleY = createText2D('0 M $');
+  titleY.position.x = -65;
+  titleY.position.y = 0;
+  titleY.position.z = -50;
+  scatterPlot.add(titleY);
+
+  var titleY = createText2D('SALES');
+  titleY.position.x = -60;
+  titleY.position.y = 70;
+  titleY.position.z = -50;
+  scatterPlot.add(titleY);
+
+  var titleZ = createText2D('COMPANIES');
+  titleZ.position.x = -46;
+  titleZ.position.y = 0;
+  titleZ.position.z = 60;
+  scatterPlot.add(titleZ);
 
   function v(x, y, z) {
       return new THREE.Vector3(x, y, z);
@@ -173,7 +208,7 @@ $(document).ready(function(){
                   .range([-50,50]);
     var yScale = d3.scale.linear()
                   .domain(yExent)
-                  .range([-5,50]);
+                  .range([-5,60]);
     var zScale = d3.scale.linear()
                   .domain(zExent)
                   .range([-50,50]);
@@ -196,48 +231,6 @@ $(document).ready(function(){
     line.type = THREE.Lines;
     scatterPlot.add(line);
 
-    // var titleX = createText2D('-X');
-    // titleX.position.x = xScale(vpts.xMin) - 12,
-    // titleX.position.y = 5;
-    // scatterPlot.add(titleX);
-    //
-    // var valueX = createText2D(format(xExent[0]));
-    // valueX.position.x = xScale(vpts.xMin) - 12,
-    // valueX.position.y = -5;
-    // scatterPlot.add(valueX);
-    //
-    //createText2D(text, color, font, size, segW, segH)
-
-
-
-    // var valueX = createText2D(format(xExent[1]));
-    // valueX.position.x = xScale(vpts.xMax) + 12,
-    // valueX.position.y = -5;
-    // scatterPlot.add(valueX);
-
-    // var titleY = createText2D('-Y');
-    // titleY.position.y = yScale(vpts.yMin) - 5;
-    // scatterPlot.add(titleY);
-    //
-    // var valueY = createText2D(format(yExent[0]));
-    // valueY.position.y = yScale(vpts.yMin) - 15,
-    // scatterPlot.add(valueY);
-    //
-    // var titleY = createText2D('Y');
-    // titleY.position.y = yScale(vpts.yMax) + 15;
-    // scatterPlot.add(titleY);
-    //
-    // var valueY = createText2D(format(yExent[1]));
-    // valueY.position.y = yScale(vpts.yMax) + 5,
-    // scatterPlot.add(valueY);
-    //
-    // var titleZ = createText2D('-Z ' + format(zExent[0]));
-    // titleZ.position.z = zScale(vpts.zMin) + 2;
-    // scatterPlot.add(titleZ);
-    //
-    // var titleZ = createText2D('Z ' + format(zExent[1]));
-    // titleZ.position.z = zScale(vpts.zMax) + 2;
-    // scatterPlot.add(titleZ);
 
     var mat = new THREE.ParticleBasicMaterial({
         vertexColors: true,
